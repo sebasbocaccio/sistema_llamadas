@@ -1,0 +1,3 @@
+/home/sebasbocaccio/Desktop/FacturacionTelefonica/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+/home/sebasbocaccio/Desktop/FacturacionTelefonica/cmake-build-debug/CMakeFiles/edit_cache.dir
+/home/sebasbocaccio/Desktop/FacturacionTelefonica/cmake-build-debug/CMakeFiles/FacturacionTelefonica.dir

@@ -1,0 +1,1 @@
+/usr/bin/c++  -g   CMakeFiles/FacturacionTelefonica.dir/main.cpp.o CMakeFiles/FacturacionTelefonica.dir/SistemaTelefonico.cpp.o  -o FacturacionTelefonica 
