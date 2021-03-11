@@ -6,25 +6,25 @@
 
 #IncludeRegexTransform: 
 
-/home/sebasbocaccio/Desktop/FacturacionTelefonica/SistemaTelefonico.cpp
+/home/sebasbocaccio/Desktop/sistema_llamadas/FacturacionTelefonica/SistemaTelefonico.cpp
 iostream
 -
 SistemaTelefonico.h
-/home/sebasbocaccio/Desktop/FacturacionTelefonica/SistemaTelefonico.h
+/home/sebasbocaccio/Desktop/sistema_llamadas/FacturacionTelefonica/SistemaTelefonico.h
 stdlib.h
 -
 
-/home/sebasbocaccio/Desktop/FacturacionTelefonica/SistemaTelefonico.h
+/home/sebasbocaccio/Desktop/sistema_llamadas/FacturacionTelefonica/SistemaTelefonico.h
 vector
-/home/sebasbocaccio/Desktop/FacturacionTelefonica/vector
+/home/sebasbocaccio/Desktop/sistema_llamadas/FacturacionTelefonica/vector
 array
-/home/sebasbocaccio/Desktop/FacturacionTelefonica/array
+/home/sebasbocaccio/Desktop/sistema_llamadas/FacturacionTelefonica/array
 map
 -
 
-/home/sebasbocaccio/Desktop/FacturacionTelefonica/main.cpp
+/home/sebasbocaccio/Desktop/sistema_llamadas/FacturacionTelefonica/main.cpp
 iostream
 -
 SistemaTelefonico.h
-/home/sebasbocaccio/Desktop/FacturacionTelefonica/SistemaTelefonico.h
+/home/sebasbocaccio/Desktop/sistema_llamadas/FacturacionTelefonica/SistemaTelefonico.h
 

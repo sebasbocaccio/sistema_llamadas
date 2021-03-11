@@ -43,10 +43,10 @@ RM = /snap/clion/121/bin/cmake/linux/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/sebasbocaccio/Desktop/FacturacionTelefonica
+CMAKE_SOURCE_DIR = /home/sebasbocaccio/Desktop/sistema_llamadas/FacturacionTelefonica
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/sebasbocaccio/Desktop/FacturacionTelefonica/cmake-build-debug
+CMAKE_BINARY_DIR = /home/sebasbocaccio/Desktop/sistema_llamadas/FacturacionTelefonica/cmake-build-debug
 
 # Include any dependencies generated for this target.
 include CMakeFiles/FacturacionTelefonica.dir/depend.make
@@ -59,29 +59,29 @@ include CMakeFiles/FacturacionTelefonica.dir/flags.make
 
 CMakeFiles/FacturacionTelefonica.dir/main.cpp.o: CMakeFiles/FacturacionTelefonica.dir/flags.make
 CMakeFiles/FacturacionTelefonica.dir/main.cpp.o: ../main.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/sebasbocaccio/Desktop/FacturacionTelefonica/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/FacturacionTelefonica.dir/main.cpp.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/FacturacionTelefonica.dir/main.cpp.o -c /home/sebasbocaccio/Desktop/FacturacionTelefonica/main.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/sebasbocaccio/Desktop/sistema_llamadas/FacturacionTelefonica/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/FacturacionTelefonica.dir/main.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/FacturacionTelefonica.dir/main.cpp.o -c /home/sebasbocaccio/Desktop/sistema_llamadas/FacturacionTelefonica/main.cpp
 
 CMakeFiles/FacturacionTelefonica.dir/main.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/FacturacionTelefonica.dir/main.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/sebasbocaccio/Desktop/FacturacionTelefonica/main.cpp > CMakeFiles/FacturacionTelefonica.dir/main.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/sebasbocaccio/Desktop/sistema_llamadas/FacturacionTelefonica/main.cpp > CMakeFiles/FacturacionTelefonica.dir/main.cpp.i
 
 CMakeFiles/FacturacionTelefonica.dir/main.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/FacturacionTelefonica.dir/main.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/sebasbocaccio/Desktop/FacturacionTelefonica/main.cpp -o CMakeFiles/FacturacionTelefonica.dir/main.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/sebasbocaccio/Desktop/sistema_llamadas/FacturacionTelefonica/main.cpp -o CMakeFiles/FacturacionTelefonica.dir/main.cpp.s
 
 CMakeFiles/FacturacionTelefonica.dir/SistemaTelefonico.cpp.o: CMakeFiles/FacturacionTelefonica.dir/flags.make
 CMakeFiles/FacturacionTelefonica.dir/SistemaTelefonico.cpp.o: ../SistemaTelefonico.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/sebasbocaccio/Desktop/FacturacionTelefonica/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/FacturacionTelefonica.dir/SistemaTelefonico.cpp.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/FacturacionTelefonica.dir/SistemaTelefonico.cpp.o -c /home/sebasbocaccio/Desktop/FacturacionTelefonica/SistemaTelefonico.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/sebasbocaccio/Desktop/sistema_llamadas/FacturacionTelefonica/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/FacturacionTelefonica.dir/SistemaTelefonico.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/FacturacionTelefonica.dir/SistemaTelefonico.cpp.o -c /home/sebasbocaccio/Desktop/sistema_llamadas/FacturacionTelefonica/SistemaTelefonico.cpp
 
 CMakeFiles/FacturacionTelefonica.dir/SistemaTelefonico.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/FacturacionTelefonica.dir/SistemaTelefonico.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/sebasbocaccio/Desktop/FacturacionTelefonica/SistemaTelefonico.cpp > CMakeFiles/FacturacionTelefonica.dir/SistemaTelefonico.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/sebasbocaccio/Desktop/sistema_llamadas/FacturacionTelefonica/SistemaTelefonico.cpp > CMakeFiles/FacturacionTelefonica.dir/SistemaTelefonico.cpp.i
 
 CMakeFiles/FacturacionTelefonica.dir/SistemaTelefonico.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/FacturacionTelefonica.dir/SistemaTelefonico.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/sebasbocaccio/Desktop/FacturacionTelefonica/SistemaTelefonico.cpp -o CMakeFiles/FacturacionTelefonica.dir/SistemaTelefonico.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/sebasbocaccio/Desktop/sistema_llamadas/FacturacionTelefonica/SistemaTelefonico.cpp -o CMakeFiles/FacturacionTelefonica.dir/SistemaTelefonico.cpp.s
 
 # Object files for target FacturacionTelefonica
 FacturacionTelefonica_OBJECTS = \
@@ -95,7 +95,7 @@ FacturacionTelefonica: CMakeFiles/FacturacionTelefonica.dir/main.cpp.o
 FacturacionTelefonica: CMakeFiles/FacturacionTelefonica.dir/SistemaTelefonico.cpp.o
 FacturacionTelefonica: CMakeFiles/FacturacionTelefonica.dir/build.make
 FacturacionTelefonica: CMakeFiles/FacturacionTelefonica.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/sebasbocaccio/Desktop/FacturacionTelefonica/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Linking CXX executable FacturacionTelefonica"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/sebasbocaccio/Desktop/sistema_llamadas/FacturacionTelefonica/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Linking CXX executable FacturacionTelefonica"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/FacturacionTelefonica.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
@@ -108,6 +108,6 @@ CMakeFiles/FacturacionTelefonica.dir/clean:
 .PHONY : CMakeFiles/FacturacionTelefonica.dir/clean
 
 CMakeFiles/FacturacionTelefonica.dir/depend:
-	cd /home/sebasbocaccio/Desktop/FacturacionTelefonica/cmake-build-debug && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/sebasbocaccio/Desktop/FacturacionTelefonica /home/sebasbocaccio/Desktop/FacturacionTelefonica /home/sebasbocaccio/Desktop/FacturacionTelefonica/cmake-build-debug /home/sebasbocaccio/Desktop/FacturacionTelefonica/cmake-build-debug /home/sebasbocaccio/Desktop/FacturacionTelefonica/cmake-build-debug/CMakeFiles/FacturacionTelefonica.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/sebasbocaccio/Desktop/sistema_llamadas/FacturacionTelefonica/cmake-build-debug && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/sebasbocaccio/Desktop/sistema_llamadas/FacturacionTelefonica /home/sebasbocaccio/Desktop/sistema_llamadas/FacturacionTelefonica /home/sebasbocaccio/Desktop/sistema_llamadas/FacturacionTelefonica/cmake-build-debug /home/sebasbocaccio/Desktop/sistema_llamadas/FacturacionTelefonica/cmake-build-debug /home/sebasbocaccio/Desktop/sistema_llamadas/FacturacionTelefonica/cmake-build-debug/CMakeFiles/FacturacionTelefonica.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : CMakeFiles/FacturacionTelefonica.dir/depend
 

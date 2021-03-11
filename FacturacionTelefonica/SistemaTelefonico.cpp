@@ -6,6 +6,16 @@
 #include <stdlib.h>
 using namespace  std;
 
+void SistemaTelefonico::actualizarCalendario(){
+    _numeroActual++;
+    _diaSemana = static_cast<semana>(_diaSemana + 1 % 7);
+    if(_numeroActual == 31){
+        _numeroActual= 1;
+        _mesActual = static_cast<mes>(_mesActual + 1 % 12);
+        if(_mesActual == Enero) _anoActual++;
+    }
+
+}
 void SistemaTelefonico::agregarClienteAlSistema(tuple<string, int> usuario) {
     // Creo cliente y lo agrego a el diccionario de clientes y al vector de facturacion por dia del mes.
     vector<llamada>* llamadasLocales = new vector<llamada> ;
@@ -23,7 +33,7 @@ void SistemaTelefonico::agregarClienteAlSistema(tuple<string, int> usuario) {
     };
     _clientes.insert(std::pair<int,cliente*>(std::get<1>(usuario),nuevoCliente));
     _clientesFechaFacturacion[_numeroActual-1].push_back(nuevoCliente);
-    _cantClientesForNumero[_diaSemana]++;
+    _cantClientesForNumero[_numeroActual-1]++;
 }
 
 void SistemaTelefonico::agregarLlamadaAcliente(cliente* usuario, destino ubicacion, string lugar ,semana dia ,int hs, int min, int duracion){
@@ -44,13 +54,15 @@ void SistemaTelefonico::agregarLlamadaAcliente(cliente* usuario, destino ubicaci
         usuario->internaciones->push_back(nuevaLlamada);
 
     }
+    else{
+        usuario->locales->push_back(nuevaLlamada);
+    }
 }
 void SistemaTelefonico::agregarNacion(string nombre, float costoMinuto){
     int index_letra = primera_letra(nombre);
-
     if( index_letra > 25 || index_letra < 0){ cerr << "Porfavor ingresar un pais valido. Recordar que tiene que comenzar con mayuscula y no aceptamos la ñ.\n";}
-    else if(!lugarEnSistema(internacional,nombre)){
-        _precioInternacional[index_letra].push_back( std::pair<string,float>(nombre,costoMinuto) );
+    else if(!estaEnSistema(internacional,nombre)){
+        _precioInternacional[index_letra].push_back(std::pair<string,float>(nombre,costoMinuto));
     }
     else {cerr << "El pais ya se encuentra en la base de datos. Si desea actualizar el monto hagalo con la funcion adecuada.\n";}
 }
@@ -97,7 +109,7 @@ float SistemaTelefonico::calcularCostoLocal(semana dia,int hs, int min, int dura
             acumulado += (60-min)* _precioBarato;
         }
         else{
-            if( hs >= COMIENZO_HORA_PICO && hs <= FIN_HORA_PICO){acumulado+= (60-min) * _precioCaro;}
+            if(hs >= COMIENZO_HORA_PICO && hs < FIN_HORA_PICO){acumulado+= (60-min) * _precioCaro;}
             else{acumulado+= (60-min) * _precioBarato;}  // No hora pico
         }
         tiempoRestante -= (60-min);
@@ -109,7 +121,7 @@ float SistemaTelefonico::calcularCostoLocal(semana dia,int hs, int min, int dura
             acumulado += tiempoRestante* _precioBarato;
         }
         else{
-            if( hs >= COMIENZO_HORA_PICO && hs <= FIN_HORA_PICO){acumulado+= tiempoRestante * _precioCaro;}
+            if(hs >= COMIENZO_HORA_PICO && hs < FIN_HORA_PICO){acumulado+= tiempoRestante * _precioCaro;}
             else{acumulado+= tiempoRestante * _precioBarato;}  // No hora pico
         }
         tiempoRestante = 0;
@@ -130,11 +142,16 @@ float SistemaTelefonico::calcularCostoLocal(semana dia,int hs, int min, int dura
         tiempoRestante-= 60;
     }
     // Necesarimente aca tiene menos de 60 mins restantes, pero puede o no los mins ser 0.
-    if( (diaActual == Sabado || diaActual == Domingo)){
+
+    // Note que puede pasar que el dia sea incorrecto porque no pregunto devuelta si cambio de dia. Sin embargo, esto no da un resultado incorrecto
+    // ya que la hora 24 == 0 nunca es horario pico por lo que el precio es el mismo siempre.
+    // Deberia cambiarse en el caso en que la tarifa modifique el monto segun dia de la semana estrictamente.
+
+    if((diaActual == Sabado || diaActual == Domingo)){
         acumulado += tiempoRestante* _precioBarato;
     }
     else{
-        if( hs >= COMIENZO_HORA_PICO && hs <= FIN_HORA_PICO){acumulado+= tiempoRestante * _precioCaro;}
+        if( hs >= COMIENZO_HORA_PICO && hs < FIN_HORA_PICO){acumulado+= tiempoRestante * _precioCaro;}
         else{acumulado+= tiempoRestante * _precioBarato;}  // No hora pico
     }
     return acumulado;
@@ -146,7 +163,6 @@ bool SistemaTelefonico::clienteEnSistema(int documento){
         return false;
     }
     return true;
-
 }
 int SistemaTelefonico::correctaInicializacion( mes mes, int numero, semana dia){
     if ((mes > 12 || mes < 1)) {
@@ -166,7 +182,7 @@ bool SistemaTelefonico::correctoDatosLlamada(int documento,destino ubicacion,str
         cerr << "La persona con documento " << documento << " no esta en el sistema. La operacion no fue realizada. Agregar al sistema el usuario antes de adjudicarle una llamada \n";
         return false ;
     }
-    if(!lugarEnSistema(ubicacion,lugar)){return false;}
+    if(!estaEnSistema(ubicacion,lugar)){return false;}
     if( (hs > 23 || hs < 0) || (min > 59 || hs < 0)){
         cerr << "En este sistema solo permitimos horarios entre 00:00 y 23:59. Porfavor ingrese un horario valido. \n";
         return false ;
@@ -176,6 +192,9 @@ bool SistemaTelefonico::correctoDatosLlamada(int documento,destino ubicacion,str
     }
     return true;
 
+}
+void SistemaTelefonico::cambiarDia(){
+    _numeroActual = 1;
 }
 void SistemaTelefonico::darDeBajaCliente(int documento) {
     // Para agregar un cliente al sistema, no puede estar inscripto anteriormente en el sistema.
@@ -197,7 +216,7 @@ void SistemaTelefonico::darDeBajaCliente(int documento) {
     }
     return;
 }
-bool SistemaTelefonico::lugarEnSistema(destino locacion, string lugar){
+bool SistemaTelefonico::estaEnSistema(destino locacion, string lugar){
 
     if(locacion == nacional){
         for (int i = 0; i < _preciolocalidades[primera_letra(lugar)].size(); i++){
@@ -213,6 +232,17 @@ bool SistemaTelefonico::lugarEnSistema(destino locacion, string lugar){
     }
     return true;
 }
+void SistemaTelefonico::mandarFactura( cliente* usuario){
+   cout << usuario->apellido << " le mandamos su factura del mes de " << _mesActual+1 << " del año "<< _anoActual << " \n" "\n";
+   cout << "El importe a pagar es de" << _montoBasico << "(monto basico) + " << usuario->importe << "=" << _montoBasico+usuario->importe << "\n \n";
+    cout << "A continuacion le detallamos las llamadas realizadas por categoria  \n \n ";
+    cout << "Locales: \n";
+    for(int i = 0 ; i < usuario->locales->size();i++){
+        cout << usuario->locales[0][i].duracion;
+    }
+}
+
+
 void SistemaTelefonico::nuevoCliente(tuple<string , int> usuario) {
 
     // Para agregar un cliente al sistema, no puede estar inscripto anteriormente en el sistema.
@@ -255,6 +285,18 @@ void SistemaTelefonico::nuevaLlamada(int documento,destino ubicacion, string lug
 
     // Le agrego la llamada.
    agregarLlamadaAcliente((it->second), ubicacion,lugar,dia,hs,min,duracion);
+}
+
+void SistemaTelefonico::nuevoDia(){
+
+    actualizarCalendario();
+
+    for(int i = 0; i < _clientesFechaFacturacion[_numeroActual-1].size();i++){
+        mandarFactura(_clientesFechaFacturacion[_numeroActual-1][i]);
+
+    }
+
+    //    cliente i. limpiarle llamadas
 }
 SistemaTelefonico::SistemaTelefonico(int ano, mes mes, int numero, semana dia ,int montoBasico){
     // Chequeo que me pasen bien el input

@@ -43,17 +43,18 @@ class SistemaTelefonico {
 
     public:
     SistemaTelefonico(int ano, mes mes, int numero, semana dia, int montoBasico);
-    ~SistemaTelefonico();
+    //~SistemaTelefonico();
 
     void agregarLlamadaAcliente(cliente* emisor, destino ubicacion, string lugar,semana dia  ,int hs, int min, int duracion);
     void agregarNacion(string nombre, float costoMinuto);
     void agregarRegion(string nombre, float costoMinuto);
     void darDeBajaCliente(int documento);
+    void mandarFactura( cliente* usuario);
     void nuevoCliente(tuple<string , int> usuario);
     void nuevaLlamada(int documento,destino ubicacion,string lugar, semana dia ,int hs, int min, int duracion);
     void nuevaLlamada(int documento,destino ubicacion, semana dia ,int hs, int min, int duracion);
     void nuevoDia();
-
+    void cambiarDia();
 
 
     private:
@@ -74,7 +75,7 @@ class SistemaTelefonico {
 
     // Guardo en una tabla de hash el nombre de la region junto al coste por minuto de llamada.
     vector<tuple<string,float>>  _preciolocalidades[25];
-                                                                                                        // ( Supongo que no hay lugares con ñ por facilidad)
+                                                                                                        // ( Supongo que no hay lugares con ñ por )
     // Guardo en una tabla de hash el nombre del pais junto al coste por minuto de llamada.
     vector<tuple<string,float>> _precioInternacional[25];
 
@@ -88,14 +89,16 @@ class SistemaTelefonico {
 
 
     // Funciones privadas
+    void actualizarCalendario();
     void agregarClienteAlSistema(tuple<string , int> usuario);
     float calcularCosto(destino ubicacion, string lugar, semana dia,int hs, int min, int duracion);
     float calcularCostoLocal(semana dia,int hs, int min, int duracion);
     bool clienteEnSistema(int dni);
     int correctaInicializacion( mes mes, int numero, semana dia); // Si no es correcta devuelve cual dato es incorrecto.
     bool correctoDatosLlamada(int documento,destino ubicacion,string lugar, semana dia ,int hs, int min, int duracion);
-    bool lugarEnSistema(destino locacion,string lugar);
+    bool estaEnSistema(destino locacion,string lugar);
     int primera_letra(string lugar);
+
 };
 
 
