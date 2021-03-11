@@ -123,6 +123,33 @@ FacturacionTelefonica/fast:
 	$(MAKE) -f CMakeFiles/FacturacionTelefonica.dir/build.make CMakeFiles/FacturacionTelefonica.dir/build
 .PHONY : FacturacionTelefonica/fast
 
+Llamada.o: Llamada.cpp.o
+
+.PHONY : Llamada.o
+
+# target to build an object file
+Llamada.cpp.o:
+	$(MAKE) -f CMakeFiles/FacturacionTelefonica.dir/build.make CMakeFiles/FacturacionTelefonica.dir/Llamada.cpp.o
+.PHONY : Llamada.cpp.o
+
+Llamada.i: Llamada.cpp.i
+
+.PHONY : Llamada.i
+
+# target to preprocess a source file
+Llamada.cpp.i:
+	$(MAKE) -f CMakeFiles/FacturacionTelefonica.dir/build.make CMakeFiles/FacturacionTelefonica.dir/Llamada.cpp.i
+.PHONY : Llamada.cpp.i
+
+Llamada.s: Llamada.cpp.s
+
+.PHONY : Llamada.s
+
+# target to generate assembly for a file
+Llamada.cpp.s:
+	$(MAKE) -f CMakeFiles/FacturacionTelefonica.dir/build.make CMakeFiles/FacturacionTelefonica.dir/Llamada.cpp.s
+.PHONY : Llamada.cpp.s
+
 SistemaTelefonico.o: SistemaTelefonico.cpp.o
 
 .PHONY : SistemaTelefonico.o
@@ -149,6 +176,33 @@ SistemaTelefonico.s: SistemaTelefonico.cpp.s
 SistemaTelefonico.cpp.s:
 	$(MAKE) -f CMakeFiles/FacturacionTelefonica.dir/build.make CMakeFiles/FacturacionTelefonica.dir/SistemaTelefonico.cpp.s
 .PHONY : SistemaTelefonico.cpp.s
+
+cliente.o: cliente.cpp.o
+
+.PHONY : cliente.o
+
+# target to build an object file
+cliente.cpp.o:
+	$(MAKE) -f CMakeFiles/FacturacionTelefonica.dir/build.make CMakeFiles/FacturacionTelefonica.dir/cliente.cpp.o
+.PHONY : cliente.cpp.o
+
+cliente.i: cliente.cpp.i
+
+.PHONY : cliente.i
+
+# target to preprocess a source file
+cliente.cpp.i:
+	$(MAKE) -f CMakeFiles/FacturacionTelefonica.dir/build.make CMakeFiles/FacturacionTelefonica.dir/cliente.cpp.i
+.PHONY : cliente.cpp.i
+
+cliente.s: cliente.cpp.s
+
+.PHONY : cliente.s
+
+# target to generate assembly for a file
+cliente.cpp.s:
+	$(MAKE) -f CMakeFiles/FacturacionTelefonica.dir/build.make CMakeFiles/FacturacionTelefonica.dir/cliente.cpp.s
+.PHONY : cliente.cpp.s
 
 main.o: main.cpp.o
 
@@ -186,9 +240,15 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... edit_cache"
 	@echo "... FacturacionTelefonica"
+	@echo "... Llamada.o"
+	@echo "... Llamada.i"
+	@echo "... Llamada.s"
 	@echo "... SistemaTelefonico.o"
 	@echo "... SistemaTelefonico.i"
 	@echo "... SistemaTelefonico.s"
+	@echo "... cliente.o"
+	@echo "... cliente.i"
+	@echo "... cliente.s"
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"

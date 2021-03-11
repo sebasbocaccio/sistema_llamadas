@@ -1,15 +1,20 @@
 #include <iostream>
 #include "SistemaTelefonico.h"
 int main() {
+    /*
     int ano = 1000;
     mes meso= static_cast<mes>(Agosto );
     int numero= 2;
     semana dia = static_cast<semana>(Domingo);
     int montoBasico = 1500;
-
-    SistemaTelefonico sistem = SistemaTelefonico(ano, meso, numero, dia, montoBasico);
     std::tuple<string,int> foo ("Facu",99);
-    sistem.nuevoCliente(foo);
+
+    SistemaTelefonico sistem = SistemaTelefonico(ano, meso, numero, dia, montoBasico); // DONE
+
+
+
+    sistem.nuevoCliente(foo); // DONE
+
     sistem.agregarNacion("Argentina",(float)0.3f);
     sistem.agregarRegion("Chascomus",(float)0.3f);
     sistem.nuevaLlamada(99,local,Martes,17,30,230.0);
@@ -18,6 +23,8 @@ int main() {
     sistem.darDeBajaCliente(99);
     sistem.cambiarDia();
     sistem.nuevoDia();
-    return 0;
+     ree
+    return 0;*/
 
+    return 0;
 }

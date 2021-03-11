@@ -6,23 +6,11 @@
 
 #IncludeRegexTransform: 
 
-/home/sebasbocaccio/Desktop/sistema_llamadas/FacturacionTelefonica/SistemaTelefonico.cpp
-iostream
--
-SistemaTelefonico.h
-/home/sebasbocaccio/Desktop/sistema_llamadas/FacturacionTelefonica/SistemaTelefonico.h
-stdlib.h
--
+/home/sebasbocaccio/Desktop/sistema_llamadas/FacturacionTelefonica/Llamada.cpp
+Llamada.h
+/home/sebasbocaccio/Desktop/sistema_llamadas/FacturacionTelefonica/Llamada.h
 
-/home/sebasbocaccio/Desktop/sistema_llamadas/FacturacionTelefonica/SistemaTelefonico.h
-vector
-/home/sebasbocaccio/Desktop/sistema_llamadas/FacturacionTelefonica/vector
-array
-/home/sebasbocaccio/Desktop/sistema_llamadas/FacturacionTelefonica/array
-map
--
-iterator
--
-algorithm
+/home/sebasbocaccio/Desktop/sistema_llamadas/FacturacionTelefonica/Llamada.h
+iostream
 -
 

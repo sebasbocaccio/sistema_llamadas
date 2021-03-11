@@ -4,7 +4,9 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
+  "/home/sebasbocaccio/Desktop/sistema_llamadas/FacturacionTelefonica/Llamada.cpp" "/home/sebasbocaccio/Desktop/sistema_llamadas/FacturacionTelefonica/cmake-build-debug/CMakeFiles/FacturacionTelefonica.dir/Llamada.cpp.o"
   "/home/sebasbocaccio/Desktop/sistema_llamadas/FacturacionTelefonica/SistemaTelefonico.cpp" "/home/sebasbocaccio/Desktop/sistema_llamadas/FacturacionTelefonica/cmake-build-debug/CMakeFiles/FacturacionTelefonica.dir/SistemaTelefonico.cpp.o"
+  "/home/sebasbocaccio/Desktop/sistema_llamadas/FacturacionTelefonica/cliente.cpp" "/home/sebasbocaccio/Desktop/sistema_llamadas/FacturacionTelefonica/cmake-build-debug/CMakeFiles/FacturacionTelefonica.dir/cliente.cpp.o"
   "/home/sebasbocaccio/Desktop/sistema_llamadas/FacturacionTelefonica/main.cpp" "/home/sebasbocaccio/Desktop/sistema_llamadas/FacturacionTelefonica/cmake-build-debug/CMakeFiles/FacturacionTelefonica.dir/main.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")

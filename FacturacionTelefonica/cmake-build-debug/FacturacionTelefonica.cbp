@@ -84,10 +84,22 @@
 				</MakeCommands>
 			</Target>
 		</Build>
+		<Unit filename="/home/sebasbocaccio/Desktop/sistema_llamadas/FacturacionTelefonica/Llamada.cpp">
+			<Option target="FacturacionTelefonica"/>
+		</Unit>
+		<Unit filename="/home/sebasbocaccio/Desktop/sistema_llamadas/FacturacionTelefonica/Llamada.h">
+			<Option target="FacturacionTelefonica"/>
+		</Unit>
 		<Unit filename="/home/sebasbocaccio/Desktop/sistema_llamadas/FacturacionTelefonica/SistemaTelefonico.cpp">
 			<Option target="FacturacionTelefonica"/>
 		</Unit>
 		<Unit filename="/home/sebasbocaccio/Desktop/sistema_llamadas/FacturacionTelefonica/SistemaTelefonico.h">
+			<Option target="FacturacionTelefonica"/>
+		</Unit>
+		<Unit filename="/home/sebasbocaccio/Desktop/sistema_llamadas/FacturacionTelefonica/cliente.cpp">
+			<Option target="FacturacionTelefonica"/>
+		</Unit>
+		<Unit filename="/home/sebasbocaccio/Desktop/sistema_llamadas/FacturacionTelefonica/cliente.h">
 			<Option target="FacturacionTelefonica"/>
 		</Unit>
 		<Unit filename="/home/sebasbocaccio/Desktop/sistema_llamadas/FacturacionTelefonica/main.cpp">
