@@ -1,6 +1,3 @@
-//
-// Created by sebasbocaccio on 9/3/21.
-//
 
 #ifndef FACTURACIONTELEFONICA_SISTEMATELEFONICO_H
 #define FACTURACIONTELEFONICA_SISTEMATELEFONICO_H
@@ -31,9 +28,9 @@ struct cliente {
     string apellido;
     float importe;
     int diaFacturacion;
-    vector<llamada>* locales;
-    vector<llamada>* nacionales;
-    vector<llamada>* internaciones;
+    vector<llamada> locales;
+    vector<llamada> nacionales;
+    vector<llamada> internaciones;
     int indiceVector;
 } ;
 
@@ -43,7 +40,7 @@ class SistemaTelefonico {
 
     public:
     SistemaTelefonico(int ano, mes mes, int numero, semana dia, int montoBasico);
-    //~SistemaTelefonico();
+    ~SistemaTelefonico();
 
     void agregarLlamadaAcliente(cliente* emisor, destino ubicacion, string lugar,semana dia  ,int hs, int min, int duracion);
     void agregarNacion(string nombre, float costoMinuto);
@@ -91,6 +88,8 @@ class SistemaTelefonico {
     // Funciones privadas
     void actualizarCalendario();
     void agregarClienteAlSistema(tuple<string , int> usuario);
+    void borrarUsuarios();
+    void borrarLlamadas(cliente* usuario);
     float calcularCosto(destino ubicacion, string lugar, semana dia,int hs, int min, int duracion);
     float calcularCostoLocal(semana dia,int hs, int min, int duracion);
     bool clienteEnSistema(int dni);

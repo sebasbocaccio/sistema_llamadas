@@ -1,6 +1,4 @@
-//
-// Created by sebasbocaccio on 9/3/21.
-//
+
 #include <iostream>
 #include "SistemaTelefonico.h"
 #include <stdlib.h>
@@ -18,9 +16,9 @@ void SistemaTelefonico::actualizarCalendario(){
 }
 void SistemaTelefonico::agregarClienteAlSistema(tuple<string, int> usuario) {
     // Creo cliente y lo agrego a el diccionario de clientes y al vector de facturacion por dia del mes.
-    vector<llamada>* llamadasLocales = new vector<llamada> ;
-    vector<llamada>* llamadasNacionales = new vector<llamada>;
-    vector<llamada>* llamadasInternaciones = new vector<llamada>;
+    vector<llamada> llamadasLocales;
+    vector<llamada> llamadasNacionales;
+    vector<llamada> llamadasInternaciones;
     cliente* nuevoCliente =  new cliente{
             std::get<1>(usuario), //Documento
             std::get<0>(usuario), // Apellido
@@ -47,15 +45,15 @@ void SistemaTelefonico::agregarLlamadaAcliente(cliente* usuario, destino ubicaci
             duracion
     };
     if(ubicacion == nacional){
-        usuario->nacionales->push_back(nuevaLlamada);
+        usuario->nacionales.push_back(nuevaLlamada);
 
     }
     else if(ubicacion == internacional){
-        usuario->internaciones->push_back(nuevaLlamada);
+        usuario->internaciones.push_back(nuevaLlamada);
 
     }
     else{
-        usuario->locales->push_back(nuevaLlamada);
+        usuario->locales.push_back(nuevaLlamada);
     }
 }
 void SistemaTelefonico::agregarNacion(string nombre, float costoMinuto){
@@ -74,6 +72,16 @@ void SistemaTelefonico::agregarRegion(string nombre, float costoMinuto){
     else{
         _preciolocalidades[index_letra].push_back( std::pair<string,int>(nombre,costoMinuto) );
     }
+}
+void SistemaTelefonico::borrarLlamadas(cliente* usuario){
+    usuario->nacionales.clear();
+    usuario->locales.clear();
+    usuario->internaciones.clear();
+}
+void SistemaTelefonico::borrarUsuarios(){
+    for (std::map<int,cliente*>::iterator it=_clientes.begin(); it!=_clientes.end(); ++it)
+        delete it->second;
+
 }
 float SistemaTelefonico::calcularCosto(destino ubicacion, string lugar,semana dia,int hs, int min, int duracion){
 
@@ -208,10 +216,6 @@ void SistemaTelefonico::darDeBajaCliente(int documento) {
 
         _cantClientesForNumero[it->second->diaFacturacion-1]--;
         // Libero la memoria que pedi
-        delete it->second->locales;
-        delete it->second->nacionales;
-        delete it->second->internaciones;
-        delete it->second;
         _clientes.erase(documento);
     }
     return;
@@ -233,12 +237,20 @@ bool SistemaTelefonico::estaEnSistema(destino locacion, string lugar){
     return true;
 }
 void SistemaTelefonico::mandarFactura( cliente* usuario){
-   cout << usuario->apellido << " le mandamos su factura del mes de " << _mesActual+1 << " del año "<< _anoActual << " \n" "\n";
-   cout << "El importe a pagar es de" << _montoBasico << "(monto basico) + " << usuario->importe << "=" << _montoBasico+usuario->importe << "\n \n";
-    cout << "A continuacion le detallamos las llamadas realizadas por categoria  \n \n ";
+   cout << usuario->apellido << " le mandamos su factura del mes " << _mesActual+1 << " del año "<< _anoActual << " \n" "\n";
+   cout << "El importe a pagar es de " << _montoBasico << "(monto basico) + " << usuario->importe << " = " << _montoBasico+usuario->importe << "\n \n";
+    cout << "A continuacion le detallamos las llamadas realizadas por categoria  \n\n ";
     cout << "Locales: \n";
-    for(int i = 0 ; i < usuario->locales->size();i++){
-        cout << usuario->locales[0][i].duracion;
+    for(int i = 0 ; i < usuario->locales.size();i++){
+        cout << "Llamada hecha a las  " << usuario->locales[i].hs<<":"<< usuario->locales[i].min << " de duracion " << usuario->locales[i].duracion << " minutos \n " ;
+    }
+    cout << "Nacionales: \n";
+    for(int i = 0 ; i < usuario->nacionales.size();i++){
+        cout << "Llamada hecha a las  " << usuario->locales[i].hs<<":"<< usuario->locales[i].min << " a la region " << usuario->locales[i].ubicacion  << " de duracion " << usuario->locales[i].duracion << " minutos \n " ;
+    }
+    cout << "Internacionales: \n";
+    for(int i = 0 ; i < usuario->nacionales.size();i++){
+        cout << "Llamada hecha a las  " << usuario->locales[i].hs<<":"<< usuario->locales[i].min << " al pais " << usuario->locales[i].ubicacion  << " de duracion " << usuario->locales[i].duracion << " minutos \n " ;
     }
 }
 
@@ -293,11 +305,12 @@ void SistemaTelefonico::nuevoDia(){
 
     for(int i = 0; i < _clientesFechaFacturacion[_numeroActual-1].size();i++){
         mandarFactura(_clientesFechaFacturacion[_numeroActual-1][i]);
-
+        borrarLlamadas(_clientesFechaFacturacion[_numeroActual-1][i]);
     }
 
     //    cliente i. limpiarle llamadas
 }
+
 SistemaTelefonico::SistemaTelefonico(int ano, mes mes, int numero, semana dia ,int montoBasico){
     // Chequeo que me pasen bien el input
     int datosCorrectos = correctaInicializacion(mes,numero,dia);
@@ -319,6 +332,11 @@ SistemaTelefonico::SistemaTelefonico(int ano, mes mes, int numero, semana dia ,i
         exit (EXIT_FAILURE);
     }
 }
+
+SistemaTelefonico::~SistemaTelefonico(){
+    borrarUsuarios();
+}
+
 int SistemaTelefonico::primera_letra(string lugar) {
     if(lugar.empty()){return -1;}
 
