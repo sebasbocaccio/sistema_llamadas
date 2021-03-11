@@ -27,11 +27,10 @@ void SistemaTelefonico::agregarClienteAlSistema(tuple<string, int> usuario) {
             llamadasLocales,
             llamadasNacionales,
             llamadasInternaciones,
-            _cantClientesForNumero[_diaSemana]
     };
     _clientes.insert(std::pair<int,cliente*>(std::get<1>(usuario),nuevoCliente));
     _clientesFechaFacturacion[_numeroActual-1].push_back(nuevoCliente);
-    _cantClientesForNumero[_numeroActual-1]++;
+
 }
 
 void SistemaTelefonico::agregarLlamadaAcliente(cliente* usuario, destino ubicacion, string lugar ,semana dia ,int hs, int min, int duracion){
@@ -89,9 +88,7 @@ float SistemaTelefonico::calcularCosto(destino ubicacion, string lugar,semana di
     if(ubicacion == local){
         // * El calculo este es bastaaante engorroso. Tome una filosofia de 'keep it simple' para : 1) Saber que funciona 2) Sea entendible. Sin embargo, esta probablemente no sea la forma mas optima.
         // * Decidi hacer una funcion auxiliar para calcularlo para hacer mas legible esta funcion.
-        float costo = calcularCostoLocal(dia,hs,min,duracion);
-        cout << costo << "\n";
-        return costo;
+        return calcularCostoLocal(dia,hs,min,duracion);
     }
     else if(ubicacion == nacional){
         for (int i = 0; i < _preciolocalidades[primera_letra(lugar)].size(); i++){
@@ -190,7 +187,9 @@ bool SistemaTelefonico::correctoDatosLlamada(int documento,destino ubicacion,str
         cerr << "La persona con documento " << documento << " no esta en el sistema. La operacion no fue realizada. Agregar al sistema el usuario antes de adjudicarle una llamada \n";
         return false ;
     }
-    if(!estaEnSistema(ubicacion,lugar)){return false;}
+    if(!estaEnSistema(ubicacion,lugar)){
+        cerr << "Ingreso un pais o region que no esta en el sistema; agregar al sistema antes porfavor. \n";
+        return false;}
     if( (hs > 23 || hs < 0) || (min > 59 || hs < 0)){
         cerr << "En este sistema solo permitimos horarios entre 00:00 y 23:59. Porfavor ingrese un horario valido. \n";
         return false ;
@@ -205,17 +204,15 @@ void SistemaTelefonico::cambiarDia(){
     _numeroActual = 1;
 }
 void SistemaTelefonico::darDeBajaCliente(int documento) {
-    // Para agregar un cliente al sistema, no puede estar inscripto anteriormente en el sistema.
+    // Para dar de baja un cliente al sistema, debe estar inscripto anteriormente en el sistema.
     if(!clienteEnSistema(documento)){
         { cerr << "La persona con documento " << documento << " no esta en el sistema. La operacion no fue realizada \n";}
     }
     else{
         auto it = _clientes.find(documento);
-        _clientesFechaFacturacion[it->second->diaFacturacion-1].erase(_clientesFechaFacturacion[it->second->diaFacturacion-1].begin() +  (it->second->indiceVector) );
-        int indice =it->second->indiceVector;
-
-        _cantClientesForNumero[it->second->diaFacturacion-1]--;
-        // Libero la memoria que pedi
+        auto it2 = find(_clientesFechaFacturacion[it->second->diaFacturacion-1].begin(),_clientesFechaFacturacion[it->second->diaFacturacion-1].end(),it->second);
+        _clientesFechaFacturacion[it->second->diaFacturacion-1].erase(it2);
+        delete it->second;
         _clientes.erase(documento);
     }
     return;
@@ -286,7 +283,7 @@ void SistemaTelefonico::nuevaLlamada(int documento,destino ubicacion, semana dia
 void SistemaTelefonico::nuevaLlamada(int documento,destino ubicacion, string lugar, semana dia  ,int hs, int min, int duracion) {
 
     // Chequeo que todo los datos sean correctos.
-    correctoDatosLlamada(documento,ubicacion,lugar,dia ,hs, min,duracion);
+    if(!correctoDatosLlamada(documento,ubicacion,lugar,dia ,hs, min,duracion)) return;
 
     // Calcular costo
     float costoLlamada = calcularCosto(ubicacion,lugar,dia,hs,min,duracion);
@@ -300,15 +297,11 @@ void SistemaTelefonico::nuevaLlamada(int documento,destino ubicacion, string lug
 }
 
 void SistemaTelefonico::nuevoDia(){
-
     actualizarCalendario();
-
     for(int i = 0; i < _clientesFechaFacturacion[_numeroActual-1].size();i++){
         mandarFactura(_clientesFechaFacturacion[_numeroActual-1][i]);
         borrarLlamadas(_clientesFechaFacturacion[_numeroActual-1][i]);
     }
-
-    //    cliente i. limpiarle llamadas
 }
 
 SistemaTelefonico::SistemaTelefonico(int ano, mes mes, int numero, semana dia ,int montoBasico){

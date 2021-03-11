@@ -11,9 +11,11 @@ int main() {
     std::tuple<string,int> foo ("Facu",99);
     sistem.nuevoCliente(foo);
     sistem.agregarNacion("Argentina",(float)0.3f);
+    sistem.agregarRegion("Chascomus",(float)0.3f);
     sistem.nuevaLlamada(99,local,Martes,17,30,230.0);
     sistem.nuevaLlamada(99,local,Martes,18,30,230.0);
-    //sistem.darDeBajaCliente(99);
+    sistem.nuevaLlamada(99,nacional,"Argentina",Martes,18,30,230.0);
+    sistem.darDeBajaCliente(99);
     sistem.cambiarDia();
     sistem.nuevoDia();
     return 0;

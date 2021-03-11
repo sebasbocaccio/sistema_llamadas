@@ -4,6 +4,8 @@
 #include "vector"
 #include "array"
 #include <map>
+#include <iterator>
+#include <algorithm>
 using namespace std;
 const int ASCII_OFFSET = 65;
 const int COMIENZO_HORA_PICO = 8;
@@ -31,7 +33,6 @@ struct cliente {
     vector<llamada> locales;
     vector<llamada> nacionales;
     vector<llamada> internaciones;
-    int indiceVector;
 } ;
 
 
@@ -79,11 +80,6 @@ class SistemaTelefonico {
     // Aca voy a guardar punteros a la informacion de la gente. Esto sirve para que cuando para saber rapidamente
     // a que personas se les debe enviar factura cuando cambia de dia.
     vector<cliente*> _clientesFechaFacturacion[30];
-
-    // Guardo cuantas personas hay en cada fecha. Su funcion es que cuando elimino una persona puedo saber cual es su indice en _clientesFechaFacturacion[dia] y poder
-    // eliminarlo sin buscarlo.
-    int _cantClientesForNumero[30] = {0} ;
-
 
     // Funciones privadas
     void actualizarCalendario();
