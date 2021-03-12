@@ -15,7 +15,7 @@ bool llamada::inputValido(int duracion, double costoXMinuto, int hs , int min){
 
 }
 double llamada::costo(){
-    return 0;
+  return 0;
 };
 /// LLAMADA LOCAL
 //LlamadaLocal::~LlamadaLocal(){}
@@ -30,7 +30,7 @@ bool LlamadaLocal::HoraPico(int duracion, int hs, int min,semana dia){
         else { return false; }
     }
 }
-double  LlamadaLocal::costo(){
+ double LlamadaLocal::costo()  {
     double acumulado = 0;
     semana diaActual = _dia;
     int tiempoRestante = _duracion;
@@ -88,12 +88,12 @@ double  LlamadaLocal::costo(){
 //LlamadaNacional::~LlamadaNacional(){}
 LlamadaNacional::LlamadaNacional(int duracion, double costoxMinuto,int hs, int min,semana dia): llamada(duracion,costoxMinuto,hs,min,dia){}
 double LlamadaNacional::costo(){
-    _costoXMinuto*_duracion;
+    return _costoXMinuto*_duracion;
 }
 
 /// LLAMADA INTERNACIONAL
 //LlamadaInternacional::~LlamadaInternacional(){}
 LlamadaInternacional::LlamadaInternacional(int duracion, double costoxMinuto,int hs, int min,semana dia): llamada(duracion,costoxMinuto,hs,min,dia){}
 double LlamadaInternacional::costo(){
-    _costoXMinuto*_duracion;
+   return  _costoXMinuto*_duracion;
 }

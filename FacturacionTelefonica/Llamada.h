@@ -11,7 +11,6 @@ enum semana {Lunes,Martes,Miercoles,Jueves,Viernes,Sabado,Domingo};
 class llamada {
 public:
     virtual ~llamada();
-
     llamada(int duracion, double costoXMinuto, int hs , int min,semana dia){
        if(inputValido(duracion,costoXMinuto,hs,min)) {
            _duracion = duracion;
@@ -24,9 +23,8 @@ public:
            throw std::invalid_argument("Argumentos invalidos");
        }
     }
-    double virtual costo();
 
-
+    virtual double costo() = 0;
 
 protected:
     double _costoXMinuto;
@@ -44,7 +42,7 @@ public:
     ~LlamadaLocal() override {}
     LlamadaLocal(int duracion, int hs , int min,semana dia);
 
-    double costo() override;
+    double costo();
 private:
     bool HoraPico(int duracion, int hs, int min,semana dia);
 };
@@ -54,7 +52,7 @@ class LlamadaNacional : public  llamada
 public:
     ~LlamadaNacional() override{}
     LlamadaNacional(int duracion, double costoXMinuto, int hs , int min,semana dia);
-    double costo() override;
+    double costo();
 };
 
 class LlamadaInternacional : public llamada
@@ -62,7 +60,7 @@ class LlamadaInternacional : public llamada
 public:
     ~LlamadaInternacional() override {}
     LlamadaInternacional(int duracion, double costoXMinuto, int hs , int min,semana dia );
-    double costo() override;
+    double costo();
 
 };
 

@@ -30,7 +30,7 @@ class SistemaTelefonico {
     void nuevaLlamada(int documento,destino ubicacion,string lugar, semana dia ,int hs, int min, int duracion);
     void nuevaLlamada(int documento,destino ubicacion, semana dia ,int hs, int min, int duracion);
     void nuevoDia();
-    void cambiarDia();
+
 
 
     private:
@@ -62,15 +62,12 @@ class SistemaTelefonico {
     void agregarClienteAlSistema(tuple<string , int> usuario);
     void borrarUsuarios();
     void borrarLlamadas(cliente* usuario);
-    float calcularCosto(destino ubicacion, string lugar, semana dia,int hs, int min, int duracion);
-    float calcularCostoLocal(semana dia,int hs, int min, int duracion);
     bool clienteEnSistema(int dni);
     int correctaInicializacion( mes mes, int numero, semana dia); // Si no es correcta devuelve cual dato es incorrecto.
     bool correctoDatosLlamada(int documento,destino ubicacion,string lugar, semana dia ,int hs, int min, int duracion);
+    double costoMinuto(destino locacion, string lugar);
     bool estaEnSistema(destino locacion,string lugar);
     int primera_letra(string lugar);
-    double costoMinuto(destino locacion, string lugar);
-
 };
 
 
